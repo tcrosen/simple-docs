@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha test/*.spec.js"
   },
-  "author": "",
+  "author": "Terry Rosen",
+  "repository": "https://github.com/tcrosen/simple-docs.git",
   "license": "ISC",
   "devDependencies": {
     "async": "^0.9.0",
