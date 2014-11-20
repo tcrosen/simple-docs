@@ -25,18 +25,18 @@ describe('Simple Docs - all comment features', function() {
   });
 
   it('should have a description and tags', function(done) {
-    simpleDocs.parseFile(fixture, outDir, function(err, docs) {
-      expect(docs[0].tags.length).to.equal(4);
-      expect(docs[0].description).to.equal('This function uses all available comment features');
+    simpleDocs.generate(fixture, { outputDir: outDir }, function(err, docs) {
+      expect(docs[0][0].tags.length).to.equal(4);
+      expect(docs[0][0].description).to.equal('This function uses all available comment features');
       done();
     });
   });
 
   it('should parse a full tag with name, type and description', function(done) {
-    simpleDocs.parseFile(fixture, outDir, function(err, docs) {
-      expect(docs[0].tags[0].name).to.equal('all');
-      expect(docs[0].tags[0].type).to.equal('string');
-      expect(docs[0].tags[0].description).to.equal('Function name');
+    simpleDocs.generate(fixture, { outputDir: outDir }, function(err, docs) {
+      expect(docs[0][0].tags[0].name).to.equal('all');
+      expect(docs[0][0].tags[0].type).to.equal('string');
+      expect(docs[0][0].tags[0].description).to.equal('Function name');
       done();
     });
   });

@@ -11,7 +11,6 @@ var fixtures = __dirname + '/fixtures';
 
 describe('Simple Docs - Basic comments', function() {
   var fixture = path.join(fixtures, 'basic.js');
-  var out = path.join(outDir, 'docs.json');
 
   beforeEach(function(done) {
     utils.cleanDir(outDir, function(err) {
@@ -25,26 +24,10 @@ describe('Simple Docs - Basic comments', function() {
     done();
   });
 
-  it('should parse a file', function(done) {
-    simpleDocs.parseFile(fixture, outDir, function(err, docs) {
-      expect(docs.length).to.equal(1);
-      done();
-    });
-  });
-
-  it('should output JSON', function(done) {
-    simpleDocs.parseFile(fixture, outDir, function(err, docs) {
-      fs.readJson(out, function(err, contents) {
-        expect(contents).not.to.be.null;
-        done();
-      });
-    });
-  });
-
   it('should only have a description', function(done) {
-    simpleDocs.parseFile(fixture, outDir, function(err, docs) {
-      expect(docs[0].tags.length).to.equal(0);
-      expect(docs[0].description).to.equal('This should only generate a description');
+    simpleDocs.generate(fixture, { outputDir: outDir }, function(err, docs) {
+      expect(docs[0][0].tags.length).to.equal(0);
+      expect(docs[0][0].description).to.equal('This should only generate a description');
       done();
     });
   });

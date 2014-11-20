@@ -5,8 +5,10 @@ var parse = require('comment-parser');
 var fs = require('fs-extra');
 var path = require('path');
 var glob = require('glob');
+var _ = require('lodash');
 
-function writeJson(file, json, done) {
+
+function _writeJson(file, json, done) {
   fs.outputJson(file, json, function(err) {
     if (err) {
       done(err);
@@ -17,33 +19,12 @@ function writeJson(file, json, done) {
 }
 
 /**
-* Generate docs from a single file
-*/
-function parseFile(file, out, done) {
-  var outputFile = path.join(out, 'docs.json');
-
-  parse.file(file, function(err, parsed) {
-    if (err) {
-      done(err);
-    }
-
-    writeJson(outputFile, parsed, function(err) {
-      if (err) {
-        done(err);
-      }
-
-      done(null, parsed);
-    });
-  });
-}
-
-/**
 * Recursively generate docs for a directory
 */
-function parseDir(dir, out, done) {
+function parseGlob(pattern, opts, done) {
   var docs = [];
 
-  glob(path.join(dir, '**/*.js'), function(err, files) {
+  glob(pattern, opts, function(err, files) {
     if (err) {
       done(err);
     }
@@ -67,7 +48,33 @@ function parseDir(dir, out, done) {
   });
 }
 
+function generate(pattern, opts, done) {
+  var options;
+
+  if (typeof opts === 'function') {
+    done = opts;
+  } else {
+    options = _.clone(opts);
+  }
+
+  var settings = _.merge({
+    outputDir: './out',
+    outputFile: 'docs.json'
+  }, options);
+
+  console.log('Generating simple docs with settings: ', settings);
+
+  parseGlob(pattern, settings, function(err, docs) {
+    _writeJson(path.join(settings.outputDir, settings.outputFile), docs, function(err) {
+      if (err) {
+        done(err);
+      }
+
+      done(null, docs);
+    });
+  });
+}
+
 module.exports = {
-  parseFile: parseFile,
-  parseDir: parseDir
+  generate: generate
 };
