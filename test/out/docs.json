@@ -1,29 +1,7 @@
 [
   {
-    "tags": [
-      {
-        "tag": "name",
-        "type": "string",
-        "name": "This",
-        "description": "should be a name tag with description and type",
-        "line": 3
-      },
-      {
-        "tag": "foo",
-        "type": "",
-        "name": "This",
-        "description": "should be a foo tag with description",
-        "line": 4
-      },
-      {
-        "tag": "description",
-        "type": "",
-        "name": "This",
-        "description": "should be a description tag with description",
-        "line": 5
-      }
-    ],
+    "tags": [],
     "line": 1,
-    "description": "This function uses all available comment features"
+    "description": "This should only generate a description"
   }
 ]

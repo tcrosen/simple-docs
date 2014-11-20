@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "chai": "^1.10.0",
-    "comment-parser": "^0.2.2"
+    "comment-parser": "^0.2.2",
+    "fs-extra": "^0.12.0"
   }
 }

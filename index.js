@@ -1,16 +1,18 @@
 'use strict';
 
 var parse = require('comment-parser');
-var fs = require('fs');
+var fs = require('fs-extra');
 var path = require('path');
 
 function parseFile(file, out, done) {
+  var outputFile = path.join(out, 'docs.json');
+
   parse.file(file, function(err, parsed) {
     if (err) {
-      console.log(err);
+      done(err);
     }
 
-    fs.writeFile(path.join(out, 'docs.json'), JSON.stringify(parsed, null, 2), function(err) {
+    fs.outputJson(outputFile, parsed, function(err) {
       if (err) {
         done(err);
       }
