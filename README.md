@@ -8,6 +8,8 @@ Generates documentation from your JS code.
 $ npm install simple-docs
 ```
 
+`hello.js`
+
 ```js
 /**
 * Says hello
@@ -17,9 +19,10 @@ function helloWorld() {
 }
 
 var simpleDocs = require('simple-docs');
-
-simpleDocs.generate('./src/*.js');
+simpleDocs.generate('hello-world.js');
 ```
+
+`out/docs.json`
 
 ```json
 [
