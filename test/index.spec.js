@@ -51,4 +51,15 @@ describe('Simple Docs', function() {
       });
     });
   });
+
+  describe('all', function() {
+    it('should have a description and tags', function(done) {
+      simpleDocs.parseFile(fixtures + '/all.js', outDir, function(err, docs) {
+        console.log(docs);
+        expect(docs[0].tags.length).to.equal(3);
+        expect(docs[0].description).to.equal('This function uses all available comment features');
+        done();
+      });
+    });
+  });
 });
