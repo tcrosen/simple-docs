@@ -10,7 +10,13 @@ function parseFile(file, out, done) {
       console.log(err);
     }
 
-    fs.writeFile(path.join(out, 'docs.json'), JSON.stringify(parsed, null, 2), done);
+    fs.writeFile(path.join(out, 'docs.json'), JSON.stringify(parsed, null, 2), function(err) {
+      if (err) {
+        done(err);
+      }
+
+      done(null, parsed);
+    });
   });
 }
 
