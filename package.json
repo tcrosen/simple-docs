@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*.spec.js"
+    "test": "mocha test/*.spec.js",
+    "docs": "node cli 'index.js'"
   },
   "author": "Terry Rosen",
   "repository": "https://github.com/tcrosen/simple-docs.git",

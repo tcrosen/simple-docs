@@ -1,0 +1,78 @@
+[
+  [
+    {
+      "tags": [
+        {
+          "tag": "private",
+          "type": "",
+          "name": "",
+          "description": "",
+          "line": 3
+        }
+      ],
+      "line": 1,
+      "description": "Write JSON docs to file"
+    },
+    {
+      "tags": [
+        {
+          "tag": "private",
+          "type": "",
+          "name": "",
+          "description": "",
+          "line": 3
+        }
+      ],
+      "line": 1,
+      "description": "Parse a list of files"
+    },
+    {
+      "tags": [
+        {
+          "tag": "prop",
+          "type": "string",
+          "name": "pattern",
+          "description": "A glob pattern.",
+          "line": 3
+        },
+        {
+          "tag": "prop",
+          "type": "Object",
+          "name": "opts",
+          "description": "Various settings for generating docs",
+          "line": 4
+        },
+        {
+          "tag": "prop",
+          "type": "string",
+          "name": "opts.outputDir",
+          "description": "Where to output generated docs (./docs/generated)",
+          "line": 5
+        },
+        {
+          "tag": "prop",
+          "type": "Function",
+          "name": "done",
+          "description": "Callback on completion with standard Node arguments:\n  done(err, docs)\n  err: Error or null if successful\n  docs: JSON array of parsed documentation",
+          "line": 6
+        },
+        {
+          "tag": "example\n\n//",
+          "type": "",
+          "name": "Parse",
+          "description": "a single file with default options\ngenerate('myFile.js');",
+          "line": 11
+        },
+        {
+          "tag": "example\n\n//",
+          "type": "",
+          "name": "Parse",
+          "description": "a directory and specify output location\ngenerate('src/*.js', { outputDir: './docs/generated' });",
+          "line": 16
+        }
+      ],
+      "line": 1,
+      "description": "Generates documentation from files."
+    }
+  ]
+]
