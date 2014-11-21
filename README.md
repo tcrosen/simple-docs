@@ -19,7 +19,7 @@ function helloWorld() {
 }
 
 var simpleDocs = require('simple-docs');
-simpleDocs.generate('hello-world.js');
+simpleDocs.generate('hello.js');
 ```
 
 `out/docs.json`
